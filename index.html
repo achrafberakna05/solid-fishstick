@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رسالة صغيرة لكِ 💖</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 24px;
+      display: grid;
+      place-items: center;
+      font-family: Arial, sans-serif;
+      color: #542b3c;
+      background: linear-gradient(135deg, #ffe3ec, #fff8ee);
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    .card {
+      width: min(680px, 100%);
+      padding: 30px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: 0 12px 40px #8d365022;
+      text-align: center;
+    }
+
+    h1 {
+      color: #c13d70;
+    }
+
+    input,
+    button {
+      font: inherit;
+      border-radius: 12px;
+      padding: 12px 16px;
+    }
+
+    input {
+      width: 180px;
+      border: 1px solid #e5a8bd;
+      text-align: center;
+      font-size: 22px;
+      letter-spacing: 8px;
+    }
+
+    button {
+      border: 0;
+      color: white;
+      background: #c13d70;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #a92f5e;
+    }
+
+    .error {
+      color: #b42318;
+    }
+
+    .message {
+      margin: 24px 0;
+      padding: 22px;
+      border-radius: 18px;
+      background: #fff0f5;
+      font-size: 32px;
+      font-weight: bold;
+      color: #c13d70;
+    }
+
+    audio {
+      width: 100%;
+      margin: 12px 0 24px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+
+    .hint {
+      color: #805969;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="card" id="gate">
+    <h1>لديكِ رسالة صغيرة 💌</h1>
+    <p>أدخلي الرمز المكوّن من أربعة أرقام</p>
+
+    <form id="codeForm">
+      <input
+        id="codeInput"
+        type="password"
+        inputmode="numeric"
+        maxlength="4"
+        pattern="[0-9]{4}"
+        placeholder="••••"
+        aria-label="الرمز"
+        required
+      >
+      <br><br>
+      <button type="submit">افتحي الرسالة</button>
+    </form>
+
+    <p id="errorMessage" class="error" hidden>الرمز غير صحيح، حاولي مرة أخرى.</p>
+  </section>
+
+  <main class="card" id="surprise" hidden>
+    <h1>إلى حبيبتي 💖</h1>
+
+    <div class="message">قييييييييو 💕</div>
+
+    <h2>أغنيتك: غصن رمان 🎵</h2>
+    <p class="hint">اضغطي زر التشغيل لسماع الأغنية</p>
+
+    <audio controls preload="metadata">
+      <source src="Albumaty.Com_mrym_shhab_ghsn_rman.mp3" type="audio/mpeg">
+      متصفحك لا يدعم تشغيل الصوت.
+    </audio>
+
+    <h2>بعض الصور الجميلة 📸</h2>
+    <div class="gallery">
+      <img src="IMG_20250412_122407.jpg" alt="صورة جميلة 1">
+    </div>
+  </main>
+
+  <script>
+    const correctCode = "1412";
+    const form = document.getElementById("codeForm");
+    const codeInput = document.getElementById("codeInput");
+    const errorMessage = document.getElementById("errorMessage");
+    const gate = document.getElementById("gate");
+    const surprise = document.getElementById("surprise");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      if (codeInput.value === correctCode) {
+        gate.hidden = true;
+        surprise.hidden = false;
+      } else {
+        errorMessage.hidden = false;
+        codeInput.value = "";
+        codeInput.focus();
+      }
+    });
+
+    codeInput.addEventListener("input", function () {
+      errorMessage.hidden = true;
+    });
+  </script>
+</body>
+</html>
